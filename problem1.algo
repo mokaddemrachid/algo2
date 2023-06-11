@@ -1,0 +1,46 @@
+//find the sum of all elements which are present in only one of the given array.
+ALGORITHM SommeTab
+VAR
+    arr1 : ARRAY_OF Integer[];
+    arr2 : ARRAY_OF Integer[];
+    i,j : INTEGER:=0
+    somme: INTEGER :=0
+    found: BOOLEAN
+BEGIN
+//remplissage des tableaux
+    FOR i FROM 0 TO arr1.length-1 STEP 1  DO
+        Write("remplir tab1")
+        read(arr1[i])
+    END_FOR
+    FOR i FROM 0 TO arr2.length-1 STEP 1  DO
+        Write("remplir tab2")
+        read(arr2[i])
+    END_FOR
+//tester si les elements du premier tableau existe dans le deuxieme tableau, si ils n'existes pas donc on va calculer leurs somme 
+    FOR i FROM 0 TO arr1.length-1 STEP 1  DO
+    found = false,
+        FOR j FROM 0 TO arr2.length-1 STEP 1  DO
+            if(arr1[i] = arr2[j]) then
+            found=true
+         End-if         
+            
+        END_FOR
+        IF (found=false) THEN
+            somme=somme + arr1[i]
+        END_IF
+    END_FOR
+    //tester si les elements du deuxieme tableau existe dans le premier tableau , si ils n'existes pas donc on va calculer leurs somme 
+        FOR i FROM 0 TO arr2.length-1 STEP 1  DO
+    found = false,
+        FOR j FROM 0 TO arr1.length-1 STEP 1  DO
+            if(arr2[i] = arr1[j]) then
+            found=true
+         End-if         
+            
+        END_FOR
+        IF (found=false) THEN
+            somme=somme + arr2[i]
+        END_IF
+    END_FOR
+Write ("la somme est :", somme)
+END

@@ -1,0 +1,82 @@
+// writing the algorithm with a procedure dot_product
+ALGORITHM Dot_Product
+VAR
+    V1 : ARRAY_OF INTEGER[];
+    V2 : ARRAY_OF INTEGER[];
+    ps : INTEGER
+
+BEGIN
+
+//appel des deux procedures 
+        remplissage(vector1, vector2)
+        dot_product(vector1,vector2, vps)
+        
+    
+
+    
+    //remplissage des 2 tableaux
+    PROCEDURE remplissage(V1, V2 : ARRAY_OF INTEGER[])
+    VAR
+        i : INTEGER
+    BEGIN
+        FOR i FROM 0 TO V1.length-1 STEP 1  DO
+        Write ("remplir V1")
+        Read(V1[i])
+        Write ("remplir V2")
+        Read(V2[i])
+        END_FOR
+    END
+    //multiplier les elements des 2 tableaux et tester si les 2 tableaux sont orthogonaux ou non
+    PROCEDURE dot_product(V1, V2 : ARRAY_OF INTEGER[], ps : INTEGER)
+    VAR
+        i : INTEGER :=0
+    BEGIN
+        FOR i FROM 0 TO V1.length-1 STEP 1  DO
+            ps := ps + (V1[i] * V2[i])
+        END_FOR
+        IF (ps=0) THEN
+            Write("les deux vecteurs sont orthogonaux")
+            ELSE 
+            Write("les deux vecteurs ne sont pas orthogonaux")
+        END_IF
+    END
+END
+
+// writing the algorithm with a function dot_product
+ALGORITHM Dot_Product
+VAR
+    V1 : ARRAY_OF INTEGER[];
+    V2 : ARRAY_OF INTEGER[];
+    ps : INTEGER
+BEGIN
+//appel de la procedure remplissage
+    remplissage(V1, V2)
+    //appel de la fonction dot_product et tester la valeur de retour (ps) du fonction puis affichage l'un de deux messages
+     IF (dot_product(V1, V2, ps)=0) THEN
+        Write("les deux vecteurs sont orthogonaux")
+     ELSE
+        Write("les deux vecteurs ne sont pas orthogonaux")
+     END_IF
+
+    PROCEDURE remplissage(V1, V2 : ARRAY_OF INTEGER[])
+    VAR
+        i : INTEGER
+    BEGIN
+        FOR i FROM 0 TO V1.length-1 STEP 1  DO
+        Write ("remplir V1")
+        Read(V1[i])
+        Write ("remplir V2")
+        Read(V2[i])
+        END_FOR
+    END
+    //multiplier les elements des deux tableaux dans un valeur de retour 
+    FUNCTION dot_product(V1, V2 : ARRAY_OF INTEGER[], ps : INTEGER) : INTEGER
+    VAR
+        i : INTEGER :=0
+    BEGIN
+        FOR i FROM 0 TO V1.length-1 STEP 1  DO
+            ps := ps + (V1[i] * V2[i])
+        END_FOR
+        return (ps)
+    END
+END
