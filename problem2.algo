@@ -4,13 +4,18 @@ VAR
     V1 : ARRAY_OF INTEGER[];
     V2 : ARRAY_OF INTEGER[];
     ps : INTEGER
+    ps_dp : INTEGER
 
 BEGIN
 
 //appel des deux procedures 
         remplissage(vector1, vector2)
-        dot_product(vector1,vector2, vps)
-        
+        ps_dp:=dot_product(vector1,vector2, vps)
+             IF (ps_dp=0) THEN
+            Write("les deux vecteurs sont orthogonaux")
+            ELSE 
+            Write("les deux vecteurs ne sont pas orthogonaux")
+            END_IF
     
 
     
@@ -34,11 +39,6 @@ BEGIN
         FOR i FROM 0 TO V1.length-1 STEP 1  DO
             ps := ps + (V1[i] * V2[i])
         END_FOR
-        IF (ps=0) THEN
-            Write("les deux vecteurs sont orthogonaux")
-            ELSE 
-            Write("les deux vecteurs ne sont pas orthogonaux")
-        END_IF
     END
 END
 
